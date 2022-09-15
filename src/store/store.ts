@@ -8,15 +8,20 @@ import { TypedUseSelectorHook, useSelector as useReduxSelector } from "react-red
 import thunk from 'redux-thunk'
 import { reducer } from "../reducer/reducer";
 
+
+
 const rootReducer = combineReducers({
-    personajes: reducer
+   personajes: reducer,
 });
 
+
+// solo para TS
 export type IRootState = ReturnType<typeof rootReducer>;
 
 // Tipamos el hook useSelector
 export const useSelector: TypedUseSelectorHook<IRootState> = useReduxSelector
 
+// esta deprecado, se usa configureStore. Al store ingresamos a los reducers, es decir, estados y acciones
 export const store = createStore(
     rootReducer, composeWithDevTools(applyMiddleware(thunk))
-)
+);

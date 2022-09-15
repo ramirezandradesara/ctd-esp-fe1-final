@@ -1,6 +1,3 @@
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { busquedaPersonajes } from '../../actions/actions';
 import BotonFavorito from '../botones/boton-favorito.componente';
 import './tarjeta-personaje.css';
 
@@ -12,36 +9,12 @@ import './tarjeta-personaje.css';
  * 
  * @returns un JSX element 
  */
-const TarjetaPersonaje = () => {
-
-    const [nextPage, setNextPage] = useState(0);
-
-    const personajesHome = useSelector((state) => state.personajes.personajes);
-    console.log(personajesHome);
-
-
-    const dispatch = useDispatch();
-
-    // const getData = async () => {
-    //     dispatch(comenzarDescargarPokemones());
-    //     try {
-    //         const personajes = await getPersonajesHome(nextPage);
-    //         dispatch(descargaPersonajesExitosa(personajes));
-    //     } catch (error) {
-    //         dispatch(descargaPersonajesErrorea(error));
-    //     }
-    // };
-
-
-    useEffect(() => {
-        // getData();
-        dispatch(busquedaPersonajes(nextPage))
-    }, [nextPage])
+const TarjetaPersonaje = ({personaje}) => {
 
     return <div className="tarjeta-personaje">
-        <img src="https://rickandmortyapi.com/api/character/avatar/1.jpeg" alt="Rick Sanchez"/>
+        <img src={personaje.image} alt={personaje.name} />
         <div className="tarjeta-personaje-body">
-            <span>Rick Sanchez</span>
+            <span>{personaje.name}</span>
             <BotonFavorito esFavorito={false} />
         </div>
     </div>
