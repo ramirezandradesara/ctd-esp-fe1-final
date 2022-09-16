@@ -1,14 +1,14 @@
-import { getPersonajesHome } from "../servicess/getPersonajesHome";
+import { getPersonajeFiltrado, getPersonajeFiltrado2, getPersonajesHome } from "../servicess/getPersonajesHome";
 
 export const comenzarDescargarPersonajes = () => {
-    return{
+    return {
         type: "DESCARGA_INICIAL_PERSONAJES",
         isLoading: true,
     }
 };
 
 export const descargaPersonajesExitosa = (personajes) => {
-    return{
+    return {
         type: "DESCARGA_EXITOSA_PERSONAJES",
         isLoading: false,
         // payload: {
@@ -31,11 +31,15 @@ export const descargaPersonajesErrorea = (error) => {
 
 // thunk
 
-export const busquedaPersonajes = (page) => {
-    return async (dispatch, getState) => {   
-            dispatch(comenzarDescargarPersonajes());
+const MINIMUM_CHARS_TO_SEARCH = 1;
+
+export const busquedaPersonajes = (name) => {
+    return async (dispatch, getState) => {
+           dispatch(comenzarDescargarPersonajes());
             try {
-                const personajes = await getPersonajesHome(page);
+                // const personajes = await getPersonajesHome(name);
+                // const personajes = await getPersonajeFiltrado(name);
+                const personajes = await getPersonajeFiltrado2(name);
                 dispatch(descargaPersonajesExitosa(personajes));
             } catch (error) {
                 dispatch(descargaPersonajesErrorea(error));

@@ -3,12 +3,19 @@ const initialState = {
     isLoading: true,
     personajes: [],
     error: null,
+    busqueda: '',
+    apiInfo: {
+        count: 0,
+        next: '',
+        pages: 0,
+        prev: ''
+    }
 }
 
 export const reducer = (state = initialState, action) => {
-    switch (action.type){
-        case "DESCARGA_INICIAL_PERSONAJES":{
-            return{
+    switch (action.type) {
+        case "DESCARGA_INICIAL_PERSONAJES": {
+            return {
                 ...state,
                 isLoading: true
             }
@@ -24,8 +31,8 @@ export const reducer = (state = initialState, action) => {
             }
         };
 
-        case "DESCARGA_ERRONEA_PERSONAJES":{
-            return{
+        case "DESCARGA_ERRONEA_PERSONAJES": {
+            return {
                 ...state,
                 isLoading: false,
                 personajes: [],
@@ -33,6 +40,17 @@ export const reducer = (state = initialState, action) => {
                 // error: action.payload.error
             }
         };
+
+        case "LIMPIAR_FILTRO":
+            return {
+                ...state,
+                busqueda: ''
+            }
+        case "FILTRAR_PERSONAJES":
+            return {
+                ...state,
+                busqueda: action.name
+            }
 
         default:
             return state;

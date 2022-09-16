@@ -24,3 +24,24 @@ export const getPersonajeFiltrado = async (nombre) => {
         .then(data => data.json())
         .then(data => data.results)
 }
+
+
+export const getPersonajeFiltrado2 = async (nombre) => {
+
+    let params = "?"
+
+    if (nombre) {
+        if (nombre?.includes('page')) {
+            params += nombre
+        } else {
+            params += `name=${nombre}`
+        }
+    }
+
+
+    return fetch(`https://rickandmortyapi.com/api/character/${params}`)
+        .then(data => data.json())
+        .then(data => data.results)
+        // .then(data => data)
+
+}
