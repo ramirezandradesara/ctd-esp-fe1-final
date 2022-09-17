@@ -5,6 +5,7 @@ import Personajes from "../types/personajes.types";
 export interface InitialState  {
     busqueda: string;
     personajes: Personajes [];
+    isLoading: boolean,
     status: "CARGANDO" | "COMPLETADO" | "COMPLETADO_CON_ERROR";
     error: string | null;
     apiInfo: {
@@ -18,6 +19,7 @@ export interface InitialState  {
 const initialState: InitialState  = {
     busqueda: "",
     personajes: [],
+    isLoading: true,
     status: "COMPLETADO",
     error: null,
     apiInfo: {
@@ -36,21 +38,23 @@ const personajesReducer: Reducer<InitialState , PersonajesActions> = (
         case "DESCARGA_INICIAL_PERSONAJES":
             return {
                 ...state,
-                status: "CARGANDO",
-                error: null,
+                // status: "CARGANDO",
+                isLoading: true
             };
 
         case "DESCARGA_EXITOSA_PERSONAJES":
             return {
                 ...state,
-                status: "COMPLETADO",
+                // status: "COMPLETADO",
+                isLoading: false,
                 personajes: [...action.payload.personajes],
             };
 
         case "DESCARGA_ERRONEA_PERSONAJES":
             return {
                 ...state,
-                status: "COMPLETADO_CON_ERROR",
+                isLoading: false,
+                // status: "COMPLETADO_CON_ERROR",
                 personajes: [], 
                 error: action.payload.error,
             };
