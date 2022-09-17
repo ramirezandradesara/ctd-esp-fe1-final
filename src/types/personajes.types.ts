@@ -1,4 +1,4 @@
-interface Personaje {
+interface Personajes {
     id: number;
     name: string;
     status: string;
@@ -13,4 +13,4 @@ interface Location {
     name: string;
     url: string
 }
-export default Personaje; 
+export default Personajes; 

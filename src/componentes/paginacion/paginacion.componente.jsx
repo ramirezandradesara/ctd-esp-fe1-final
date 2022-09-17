@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { busquedaPersonajes } from '../../actions/actions';
+// import { busquedaPersonajes } from '../../actions/actions';
 import './paginacion.css';
 
 /**
@@ -21,7 +21,7 @@ const Paginacion = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(busquedaPersonajes(pagina))
+        // dispatch(busquedaPersonajes(pagina))
     }, [pagina])
 
     return <div className="paginacion">
