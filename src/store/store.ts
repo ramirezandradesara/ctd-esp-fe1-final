@@ -6,12 +6,12 @@ import { createStore, applyMiddleware } from 'redux';
 import { TypedUseSelectorHook, useSelector as useReduxSelector } from "react-redux";
 
 import thunk from 'redux-thunk'
-import { reducer } from "../reducer/reducer";
+import personajesReducer  from '../reducer/personajesReducer'
 
 
 
 const rootReducer = combineReducers({
-   personajes: reducer,
+   personajes: personajesReducer,
 });
 
 

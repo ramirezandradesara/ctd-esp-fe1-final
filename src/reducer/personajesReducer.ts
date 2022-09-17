@@ -28,32 +28,30 @@ const initialState: InitialState  = {
     },
 };
 
-// componente
+
 const personajesReducer: Reducer<InitialState , PersonajesActions> = (
-    state = initialState,
-    action
-): InitialState  => {
+    state = initialState, action ): InitialState  => {
     switch (action.type) {
-        // case "BUSCAR_PERSONAJES":
+
         case "DESCARGA_INICIAL_PERSONAJES":
             return {
                 ...state,
                 status: "CARGANDO",
                 error: null,
             };
+
         case "DESCARGA_EXITOSA_PERSONAJES":
             return {
                 ...state,
                 status: "COMPLETADO",
                 personajes: [...action.payload.personajes],
-                // personajes: action.data.results,
-                // apiInfo: action.data.info,
             };
+
         case "DESCARGA_ERRONEA_PERSONAJES":
             return {
                 ...state,
                 status: "COMPLETADO_CON_ERROR",
-                personajes: [], //opcional
+                personajes: [], 
                 error: action.payload.error,
             };
 

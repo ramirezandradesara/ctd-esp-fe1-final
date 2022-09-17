@@ -14,11 +14,13 @@ import Personajes from '../../types/personajes.types';
  * @returns {JSX element} 
  */
 
+ export const useSelector: TypedUseSelectorHook<IRootState> = useReduxSelector
 
 
 const GrillaPersonajes: FC = (): JSX.Element => {
 
     const personajesHome: Personajes[] = useSelector((state) => state.personajes.personajes);
+    console.log("🚀 ~ file: grilla-personajes.componente.tsx ~ line 23 ~ personajesHome", personajesHome)
 
     return <div className="grilla-personajes">
 

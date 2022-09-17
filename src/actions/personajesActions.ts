@@ -3,31 +3,29 @@ import Personajes from "../types/personajes.types";
 import { IRootState } from "../store/store";
 import { getPersonajesHome } from "../service/getPersonajes";
 
-
-
-interface ComenzarDescargarPersonajes extends Action {
+export interface ComenzarDescargarPersonajes extends Action {
     type: "DESCARGA_INICIAL_PERSONAJES",
-}; // ✅
+}; 
 
-interface DescargaPersonajesExitosa extends Action {
+export interface DescargaPersonajesExitosa extends Action {
     type: "DESCARGA_EXITOSA_PERSONAJES",
     payload: {
         personajes: Personajes[]
     }
-}; // ✅
+}; 
 
-interface DescargaPersonajesErrorea extends Action {
+export interface DescargaPersonajesErrorea extends Action {
     type: "DESCARGA_ERRONEA_PERSONAJES",
     payload: {
-        error: string // ✅
+        error: string 
     }
 };
 
 
 export type PersonajesActions =
-    | ComenzarDescargarPersonajes
+     ComenzarDescargarPersonajes
     | DescargaPersonajesErrorea
-    | DescargaPersonajesExitosa; // ✅
+    | DescargaPersonajesExitosa; 
 
 
 
@@ -43,9 +41,8 @@ export const descargaPersonajesExitosa: ActionCreator<DescargaPersonajesExitosa>
         type: "DESCARGA_EXITOSA_PERSONAJES",
         isLoading: false,
         payload: {
-            personajes
+            personajes: personajes
         }
-        // personajes: personajes // podemos poner solo porque gracias a EcM6 si se llama igual no hace falta 
     }
 };
 
@@ -56,26 +53,23 @@ export const descargaPersonajesErrorea: ActionCreator<DescargaPersonajesErrorea>
         payload: {
             error: error
         }
-        // error: error
     }
 };
 
 
-// thunk
+export interface BusquedaPersonajes extends ThunkAction<void, IRootState, unknown, PersonajesActions> { } 
 
-export interface BusquedaPersonajes extends ThunkAction<void, IRootState, unknown, PersonajesActions> { } // ✅
+// thunk
 
 const MINIMUM_CHARS_TO_SEARCH = 1;
 
-export const busquedaPersonajes = (name: string): BusquedaPersonajes => {
+export const busquedaPersonajes = (name?: string): BusquedaPersonajes => {
     return async (dispatch, getState) => {
         if(name && name.length < MINIMUM_CHARS_TO_SEARCH) {return null};
         dispatch(comenzarDescargarPersonajes());
         try {
             const personajes = await getPersonajesHome(name);
-            // const personajes = await getPersonajeFiltrado(name);
-            // const personajes = await getPersonajeFiltrado2(name);
-            dispatch(descargaPersonajesExitosa(personajes));
+            dispatch(descargaPersonajesExitosa(personajes));         
         } catch (error) {
             dispatch(descargaPersonajesErrorea(error));
         }
