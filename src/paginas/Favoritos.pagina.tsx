@@ -12,9 +12,9 @@ import Personajes from "../types/personajes.types";
  * Uso: 
  * ``` <PaginaFavoritos /> ```
  * 
- * @returns la pagina de favoritos
+ * @returns {JSX element} 
  */
-const PaginaFavoritos = () => {
+const PaginaFavoritos = (): JSX.Element => {
 
     const favoritos = useSelector((state) => state.favoritos.favoritos)
     const dispatch = useDispatch()

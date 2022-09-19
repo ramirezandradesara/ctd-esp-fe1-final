@@ -4,10 +4,7 @@ import { IRootState, useSelector } from '../../store/store';
 import { busquedaPersonajes } from '../../actions/personajesActions';
 
 /**
- * Componente que contiene los botones para paginar
- * 
- * Deberás agregar las propiedades necesarias para que funcione correctamente
- * 
+ * Componente que contiene los botones para paginar 
  * 
  * @returns {JSX element} 
  */

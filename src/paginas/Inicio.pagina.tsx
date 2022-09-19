@@ -11,9 +11,9 @@ import { useEffect } from "react";
  * Uso: 
  * ``` <PaginaInicio /> ```
  * 
- * @returns la pagina de inicio
+ * @returns {JSX element} 
  */
-const PaginaInicio = () => {
+const PaginaInicio = (): JSX.Element => {
 
 
     const dispatch = useDispatch();

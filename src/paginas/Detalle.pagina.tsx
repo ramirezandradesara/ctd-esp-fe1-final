@@ -16,7 +16,7 @@ import Personajes from "../types/personajes.types";
  * Uso: 
  * ``` <PaginaDetalle /> ```
  * 
- * @returns la pagina de detalle
+ * @returns {JSX element} 
  */
 const PaginaDetalle = ({ id, name, image, episode }: Personajes): JSX.Element => {
     const dispatch = useDispatch();
@@ -28,7 +28,7 @@ const PaginaDetalle = ({ id, name, image, episode }: Personajes): JSX.Element =>
      * Función que en caso que el personaje no se encuentre en Favoritos, al clickear despacha la acción para agregarlo. 
      * Si ya se encuentra en favoritos, al volver a clickear se elimina.
      */
-    
+
     const agregarFav = () => {
         !esFavorito
             ? dispatch(agregarFavorito({ id, name, image }))

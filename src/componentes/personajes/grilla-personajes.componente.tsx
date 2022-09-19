@@ -10,9 +10,6 @@ import { useSelector } from '../../store/store';
 /**
  * Componente que renderiza la grilla de personajes para la página de inicio
  * 
- * Deberás agregar las funciones necesarias para mostrar y paginar los personajes
- * 
- * 
  * @returns {JSX element} 
  */
 

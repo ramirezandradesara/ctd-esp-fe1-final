@@ -8,10 +8,7 @@ import { agregarFavorito, eliminarFavorito } from '../../actions/favoritosAction
 
 /**
  * Tarjeta para cada personaje dentro de la grilla de personajes. 
- * 
- * Deberás agregar las propiedades necesarias para mostrar los datos de los personajes
- * 
- * 
+ * @param {Personaje} personaje
  * @returns {JSX element} 
  */
 
@@ -35,12 +32,12 @@ const TarjetaPersonaje = ({ id, name, image, episode }: Personajes): JSX.Element
             : dispatch(eliminarFavorito({ id, name, image }))
     };
 
-  
+
     return <div className="tarjeta-personaje">
         <img src={image} alt={name} />
         <div className="tarjeta-personaje-body">
             <span>{name}</span>
-            <BotonFavorito esFavorito={esFavorito} agregarFav={agregarFav}/>
+            <BotonFavorito esFavorito={esFavorito} agregarFav={agregarFav} />
         </div>
     </div>
 }
