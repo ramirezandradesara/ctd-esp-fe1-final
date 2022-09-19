@@ -11,9 +11,13 @@ export const getPersonajesHome = async (nombre?: string): Promise<Personajes[] |
         }
     }
 
+    try {
+        const response = await fetch(`https://rickandmortyapi.com/api/character/${params}`);
+        const results = await response.json();
+        return results;
+        
 
-    return fetch(`https://rickandmortyapi.com/api/character/${params}`)
-        .then(data => data.json())
-        // .then(data => data.results)
-        .then(data => data)
+    } catch (error) {
+        console.log(error);
+    }
 }

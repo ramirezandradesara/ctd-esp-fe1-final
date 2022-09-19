@@ -2,8 +2,9 @@ import './grilla-personajes.css';
 import TarjetaPersonaje from './tarjeta-personaje.componente';
 import { IRootState } from '../../store/store';
 import { useDispatch, TypedUseSelectorHook, useSelector as useReduxSelector  } from 'react-redux';
-import { FC } from 'react';
+import { FC, useEffect, useState } from 'react';
 import Personajes from '../../types/personajes.types';
+import { busquedaPersonajes } from '../../actions/personajesActions';
 
 /**
  * Componente que renderiza la grilla de personajes para la página de inicio
@@ -17,10 +18,11 @@ import Personajes from '../../types/personajes.types';
  export const useSelector: TypedUseSelectorHook<IRootState> = useReduxSelector
 
 
-const GrillaPersonajes: FC = (): JSX.Element => {
+const GrillaPersonajes: FC = (): JSX.Element => {  
+
 
     const personajesHome: Personajes[] = useSelector((state) => state.personajes.personajes);
-    console.log("🚀 ~ file: grilla-personajes.componente.tsx ~ line 23 ~ personajesHome", personajesHome)
+
 
     return <div className="grilla-personajes">
 

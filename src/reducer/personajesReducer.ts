@@ -47,7 +47,8 @@ const personajesReducer: Reducer<InitialState , PersonajesActions> = (
                 ...state,
                 // status: "COMPLETADO",
                 isLoading: false,
-                personajes: [...action.payload.personajes],
+                personajes: [...action.data.results],
+                apiInfo: action.data.info
             };
 
         case "DESCARGA_ERRONEA_PERSONAJES":

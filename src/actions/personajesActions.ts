@@ -3,15 +3,26 @@ import Personajes from "../types/personajes.types";
 import { IRootState } from "../store/store";
 import { getPersonajesHome } from "../service/getPersonajes";
 
+interface BuscarPersonajeParams {
+    info: {
+        count: number,
+        next: string,
+        pages: number,
+        prev: string
+    },
+    results: Personajes[]
+}
+
 export interface ComenzarDescargarPersonajes extends Action {
     type: "DESCARGA_INICIAL_PERSONAJES",
 }; 
 
 export interface DescargaPersonajesExitosa extends Action {
     type: "DESCARGA_EXITOSA_PERSONAJES",
-    payload: {
-        personajes: Personajes[]
-    }
+    // payload: {
+    //     personajes: Personajes[],
+    // }
+    data: BuscarPersonajeParams
 }; 
 
 export interface DescargaPersonajesErrorea extends Action {
@@ -36,13 +47,14 @@ export const comenzarDescargarPersonajes: ActionCreator<ComenzarDescargarPersona
     }
 };
 
-export const descargaPersonajesExitosa: ActionCreator<DescargaPersonajesExitosa> = (personajes: Personajes[]) => {
+export const descargaPersonajesExitosa: ActionCreator<DescargaPersonajesExitosa> = (data: BuscarPersonajeParams) => {
     return {
         type: "DESCARGA_EXITOSA_PERSONAJES",
         isLoading: false,
-        payload: {
-            personajes: personajes
-        }
+        data: data
+        // payload: {
+        //     personajes: personajes
+        // },
     }
 };
 
