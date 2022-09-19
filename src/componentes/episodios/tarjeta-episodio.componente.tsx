@@ -6,9 +6,9 @@ import './tarjeta-episodio.css';
  * Deberás agregar las propiedades necesarias para mostrar los datos de los episodios
  * 
  * 
- * @returns un JSX element 
+ * @returns {JSX element} 
  */
-const TarjetaEpisodio = () => {
+const TarjetaEpisodio = (): JSX.Element  => {
 
     return <div className="tarjeta-episodio">
             <h4>Close Rick-counters of the Rick Kind</h4>

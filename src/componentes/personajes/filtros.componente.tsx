@@ -1,10 +1,15 @@
-import { useState } from 'react';
+import { FC, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { busquedaPersonajes, filtrarPersonajes, limpiarFiltro } from '../../actions/personajesActions';
 import { useSelector } from '../../store/store';
 import './filtros.css';
 
-const Filtros = () => {
+/**
+ * 
+ * @returns {JSX element} 
+ */
+
+const Filtros: FC = (): JSX.Element => {
 
     const dispatch = useDispatch();
 
@@ -12,7 +17,7 @@ const Filtros = () => {
 
 
     return <div className="filtros">
-        <label for="nombre">Filtrar por nombre:</label>
+        <label htmlFor="nombre">Filtrar por nombre:</label>
         <input
             type="text"
             onChange={(e) => {

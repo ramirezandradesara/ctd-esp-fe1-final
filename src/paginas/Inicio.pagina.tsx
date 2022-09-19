@@ -22,8 +22,6 @@ const PaginaInicio = () => {
         dispatch(busquedaPersonajes());
     }, []);
 
-
-
     return <div className="container">
         <div className="actions">
             <h3>Catálogo de Personajes</h3>

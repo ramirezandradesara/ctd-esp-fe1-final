@@ -5,10 +5,12 @@ import './boton-favorito.css';
  * 
  * Deberás tipar las propiedades si usas este componente
  * 
- * 
- * @returns un JSX element 
+ * @param {object | undefined} esFavorito
+ * @param {Function} agregarFav
+ * @returns {JSX.Element}
  */
-const BotonFavorito = ({esFavorito, agregarFav}: BotonFavoritoInterface) => {
+
+const BotonFavorito = ({esFavorito, agregarFav}: BotonFavoritoInterface): JSX.Element => {
     const src = esFavorito ? "/imagenes/star-filled.png" : "/imagenes/star.png"
 
     return <div className="boton-favorito">

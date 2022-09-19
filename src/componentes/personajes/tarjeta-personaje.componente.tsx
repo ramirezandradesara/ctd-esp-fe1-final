@@ -25,6 +25,10 @@ const TarjetaPersonaje = ({ id, name, image, episode }: Personajes): JSX.Element
 
     const esFavorito = favoritos.find(fav => fav.id === id);
 
+    /**
+     * Función que en caso que el personaje no se encuentre en Favoritos, al clickear despacha la acción para agregarlo. 
+     * Si ya se encuentra en favoritos, al volver a clickear se elimina.
+     */
     const agregarFav = () => {
         !esFavorito
             ? dispatch(agregarFavorito({ id, name, image }))

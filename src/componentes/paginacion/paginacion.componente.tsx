@@ -1,6 +1,6 @@
 import './paginacion.css';
 import { TypedUseSelectorHook, useSelector as useReduxSelector, useDispatch } from 'react-redux';
-import { IRootState } from '../../store/store';
+import { IRootState, useSelector } from '../../store/store';
 import { busquedaPersonajes } from '../../actions/personajesActions';
 
 /**
@@ -11,9 +11,6 @@ import { busquedaPersonajes } from '../../actions/personajesActions';
  * 
  * @returns {JSX element} 
  */
-
- export const useSelector: TypedUseSelectorHook<IRootState> = useReduxSelector
-
 
 const Paginacion = () : JSX.Element  => {
     const { apiInfo } = useSelector((state) => state.personajes);
