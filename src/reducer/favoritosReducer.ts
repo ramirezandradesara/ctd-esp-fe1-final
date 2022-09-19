@@ -1,7 +1,6 @@
 import { Reducer } from "@reduxjs/toolkit";
 import { FavoritosActions } from "../actions/favoritosActions";
 import Personajes from "../types/personajes.types";
-import { InitialState } from "./personajesReducer";
 
 
 export interface FavoritosInitialState {

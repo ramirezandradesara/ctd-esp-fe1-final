@@ -3,7 +3,7 @@ import './tarjeta-personaje.css';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Personajes from '../../types/personajes.types';
-import { useSelector } from '../../helpers/useSelector';
+import { useSelector } from '../../store/store';
 import { agregarFavorito, eliminarFavorito } from '../../actions/favoritosActions';
 
 /**
@@ -24,7 +24,6 @@ const TarjetaPersonaje = ({ id, name, image, episode }: Personajes): JSX.Element
     const favoritos = useSelector((state) => state.favoritos.favoritos);
 
     const esFavorito = favoritos.find(fav => fav.id === id);
-    console.log("🚀 ~ file: tarjeta-personaje.componente.tsx ~ line 27 ~ TarjetaPersonaje ~ esFavorito", esFavorito)
 
     const agregarFav = () => {
         !esFavorito
@@ -32,9 +31,7 @@ const TarjetaPersonaje = ({ id, name, image, episode }: Personajes): JSX.Element
             : dispatch(eliminarFavorito({ id, name, image }))
     };
 
-    
-
-
+  
     return <div className="tarjeta-personaje">
         <img src={image} alt={name} />
         <div className="tarjeta-personaje-body">

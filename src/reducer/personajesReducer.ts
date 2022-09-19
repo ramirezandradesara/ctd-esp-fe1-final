@@ -2,9 +2,9 @@ import { Reducer } from "@reduxjs/toolkit";
 import { PersonajesActions } from "../actions/personajesActions";
 import Personajes from "../types/personajes.types";
 
-export interface InitialState  {
-    busqueda: string;
-    personajes: Personajes [];
+export interface InitialState {
+    personajeFiltrado: string;
+    personajes: Personajes[];
     isLoading: boolean,
     status: "CARGANDO" | "COMPLETADO" | "COMPLETADO_CON_ERROR";
     error: string | null;
@@ -16,8 +16,8 @@ export interface InitialState  {
     };
 }
 
-const initialState: InitialState  = {
-    busqueda: "",
+const initialState: InitialState = {
+    personajeFiltrado: "",
     personajes: [],
     isLoading: true,
     status: "COMPLETADO",
@@ -31,8 +31,8 @@ const initialState: InitialState  = {
 };
 
 
-const personajesReducer: Reducer<InitialState , PersonajesActions> = (
-    state = initialState, action ): InitialState  => {
+const personajesReducer: Reducer<InitialState, PersonajesActions> = (
+    state = initialState, action): InitialState => {
     switch (action.type) {
 
         case "DESCARGA_INICIAL_PERSONAJES":
@@ -56,21 +56,22 @@ const personajesReducer: Reducer<InitialState , PersonajesActions> = (
                 ...state,
                 isLoading: false,
                 // status: "COMPLETADO_CON_ERROR",
-                personajes: [], 
+                personajes: [],
                 error: action.payload.error,
             };
 
 
-        /*case "LIMPIAR_FILTRO":
+        case "LIMPIAR_FILTRO":
             return {
                 ...state,
-                busqueda: "",
+                personajeFiltrado: "",
             };
+
         case "FILTRAR_PERSONAJES":
             return {
                 ...state,
-                busqueda: action.name,
-            };*/
+                personajeFiltrado: action.personajeFiltrado,
+            };
 
         default:
             return state;

@@ -15,7 +15,7 @@ interface BuscarPersonajeParams {
 
 export interface ComenzarDescargarPersonajes extends Action {
     type: "DESCARGA_INICIAL_PERSONAJES",
-}; 
+};
 
 export interface DescargaPersonajesExitosa extends Action {
     type: "DESCARGA_EXITOSA_PERSONAJES",
@@ -23,20 +23,31 @@ export interface DescargaPersonajesExitosa extends Action {
     //     personajes: Personajes[],
     // }
     data: BuscarPersonajeParams
-}; 
+};
 
 export interface DescargaPersonajesErrorea extends Action {
     type: "DESCARGA_ERRONEA_PERSONAJES",
     payload: {
-        error: string 
+        error: string
     }
+};
+
+export interface LimpiarFiltro extends Action {
+    type: "LIMPIAR_FILTRO"
+};
+
+export interface FiltrarPersonajes extends Action {
+    type: "FILTRAR_PERSONAJES",
+    personajeFiltrado: string
 };
 
 
 export type PersonajesActions =
-     ComenzarDescargarPersonajes
+    ComenzarDescargarPersonajes
     | DescargaPersonajesErrorea
-    | DescargaPersonajesExitosa; 
+    | DescargaPersonajesExitosa
+    | LimpiarFiltro
+    | FiltrarPersonajes;
 
 
 
@@ -58,6 +69,19 @@ export const descargaPersonajesExitosa: ActionCreator<DescargaPersonajesExitosa>
     }
 };
 
+export const limpiarFiltro: ActionCreator<LimpiarFiltro> = () => {
+    return {
+        type: "LIMPIAR_FILTRO"
+    }
+};
+
+export const filtrarPersonajes: ActionCreator<FiltrarPersonajes> = (personajeFiltrado: string) => {
+    return {
+        type: "FILTRAR_PERSONAJES",
+        personajeFiltrado
+    }
+};
+
 export const descargaPersonajesErrorea: ActionCreator<DescargaPersonajesErrorea> = (error: string) => {
     return {
         type: "DESCARGA_ERRONEA_PERSONAJES",
@@ -69,19 +93,16 @@ export const descargaPersonajesErrorea: ActionCreator<DescargaPersonajesErrorea>
 };
 
 
-export interface BusquedaPersonajes extends ThunkAction<void, IRootState, unknown, PersonajesActions> { } 
+export interface BusquedaPersonajes extends ThunkAction<void, IRootState, unknown, PersonajesActions> { }
 
 // thunk
 
-const MINIMUM_CHARS_TO_SEARCH = 1;
-
 export const busquedaPersonajes = (name?: string): BusquedaPersonajes => {
     return async (dispatch, getState) => {
-        if(name && name.length < MINIMUM_CHARS_TO_SEARCH) {return null};
         dispatch(comenzarDescargarPersonajes());
         try {
             const personajes = await getPersonajesHome(name);
-            dispatch(descargaPersonajesExitosa(personajes));         
+            dispatch(descargaPersonajesExitosa(personajes));
         } catch (error) {
             dispatch(descargaPersonajesErrorea(error));
         }
