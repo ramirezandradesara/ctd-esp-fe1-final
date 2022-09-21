@@ -11,6 +11,7 @@ import { useEffect } from "react";
  * Uso: 
  * ``` <PaginaInicio /> ```
  * 
+ * @author Sara Ramírez 
  * @returns {JSX element} 
  */
 const PaginaInicio = (): JSX.Element => {

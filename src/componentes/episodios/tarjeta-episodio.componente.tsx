@@ -3,6 +3,7 @@ import './tarjeta-episodio.css';
 /**
  * Tarjeta para cada episodio dentro de la vista de personaje.
  * 
+ * @author Sara Ramírez 
  * @returns {JSX element} 
  */
 const TarjetaEpisodio = (): JSX.Element  => {

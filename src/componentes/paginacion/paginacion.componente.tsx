@@ -6,11 +6,13 @@ import { busquedaPersonajes } from '../../actions/personajesActions';
 /**
  * Componente que contiene los botones para paginar 
  * 
+ * @author Sara Ramírez 
  * @returns {JSX element} 
  */
 
 const Paginacion = () : JSX.Element  => {
-    const { apiInfo } = useSelector((state) => state.personajes);
+  
+    const apiInfo = useSelector((state) => state.personajes.apiInfo);
     const dispatch = useDispatch();
  
     const prevPage = apiInfo?.prev?.split("?")[1] 

@@ -3,6 +3,7 @@ import './boton-favorito.css';
 /**
  * Boton que indica si un elemento es favorito o no, y da la posibilidad de marcarlo/desmarcarlo
  * 
+ * @author Sara Ramírez 
  * @param {object | undefined} esFavorito
  * @param {Function} agregarFav
  * @returns {JSX.Element}

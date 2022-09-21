@@ -10,6 +10,7 @@ import { useSelector } from '../../store/store';
 /**
  * Componente que renderiza la grilla de personajes para la página de inicio
  * 
+ * @author Sara Ramírez 
  * @returns {JSX element} 
  */
 

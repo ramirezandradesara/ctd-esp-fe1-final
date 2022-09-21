@@ -8,6 +8,8 @@ import { agregarFavorito, eliminarFavorito } from '../../actions/favoritosAction
 
 /**
  * Tarjeta para cada personaje dentro de la grilla de personajes. 
+ * 
+ * @author Sara Ramírez 
  * @param {Personaje} personaje
  * @returns {JSX element} 
  */

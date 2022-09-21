@@ -6,7 +6,6 @@ export interface InitialState {
     personajeFiltrado: string;
     personajes: Personajes[];
     isLoading: boolean,
-    status: "CARGANDO" | "COMPLETADO" | "COMPLETADO_CON_ERROR";
     error: string | null;
     apiInfo: {
         count: number;
@@ -20,7 +19,6 @@ const initialState: InitialState = {
     personajeFiltrado: "",
     personajes: [],
     isLoading: true,
-    status: "COMPLETADO",
     error: null,
     apiInfo: {
         count: 0,
@@ -38,14 +36,12 @@ const personajesReducer: Reducer<InitialState, PersonajesActions> = (
         case "DESCARGA_INICIAL_PERSONAJES":
             return {
                 ...state,
-                // status: "CARGANDO",
                 isLoading: true
             };
 
         case "DESCARGA_EXITOSA_PERSONAJES":
             return {
                 ...state,
-                // status: "COMPLETADO",
                 isLoading: false,
                 personajes: [...action.data.results],
                 apiInfo: action.data.info
@@ -55,7 +51,6 @@ const personajesReducer: Reducer<InitialState, PersonajesActions> = (
             return {
                 ...state,
                 isLoading: false,
-                // status: "COMPLETADO_CON_ERROR",
                 personajes: [],
                 error: action.payload.error,
             };

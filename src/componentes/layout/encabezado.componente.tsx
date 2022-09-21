@@ -6,6 +6,7 @@ import './encabezado.css';
  *
  * Uso: `<Encabezado />`
  *
+ * @author Sara Ramírez 
  * @returns {JSX.Element}
  */
 const Encabezado = (): JSX.Element => {

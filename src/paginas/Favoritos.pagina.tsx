@@ -12,6 +12,7 @@ import Personajes from "../types/personajes.types";
  * Uso: 
  * ``` <PaginaFavoritos /> ```
  * 
+ * @author Sara Ramírez 
  * @returns {JSX element} 
  */
 const PaginaFavoritos = (): JSX.Element => {

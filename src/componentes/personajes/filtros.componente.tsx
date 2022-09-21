@@ -7,6 +7,7 @@ import './filtros.css';
 /**
  * Componente que realiza el filtrado de personajes según lo que se ingrese en el input de búsqueda
  * 
+ * @author Sara Ramírez 
  * @returns {JSX element} 
  */
 
