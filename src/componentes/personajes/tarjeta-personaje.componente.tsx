@@ -14,7 +14,6 @@ import { agregarFavorito, eliminarFavorito } from '../../actions/favoritosAction
  * @returns {JSX element} 
  */
 
-
 const TarjetaPersonaje = ({ id, name, image, episode }: Personajes): JSX.Element => {
 
     const dispatch = useDispatch();

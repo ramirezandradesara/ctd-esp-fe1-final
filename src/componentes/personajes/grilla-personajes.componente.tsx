@@ -19,6 +19,8 @@ const GrillaPersonajes: FC = (): JSX.Element => {
     const personajesHome: Personajes[] = useSelector((state) => state.personajes.personajes);
     const isLoading = useSelector((state) => state.personajes.isLoading)
 
+    if(personajesHome.length === 0) return <h4>No se encontró ningun personaje según tu busqueda.</h4>
+
     return <div className="grilla-personajes">
 
         {isLoading

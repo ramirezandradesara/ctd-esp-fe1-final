@@ -16,7 +16,6 @@ import { useEffect } from "react";
  */
 const PaginaInicio = (): JSX.Element => {
 
-
     const dispatch = useDispatch();
 
     useEffect(() => {
